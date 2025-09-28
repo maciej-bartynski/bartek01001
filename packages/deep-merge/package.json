@@ -27,7 +27,7 @@
     "javascript"
   ],
   "author": "bartek01001",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maciej-bartynski/deep-merge.git"

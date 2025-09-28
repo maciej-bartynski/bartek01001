@@ -17,7 +17,7 @@
     "workflow"
   ],
   "author": "bartek01001",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/maciej-bartynski/fadro.git"
