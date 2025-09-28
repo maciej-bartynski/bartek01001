@@ -99,16 +99,19 @@ make dev-deep-merge        # Deep merge utility
 - Automatic recompilation on file changes
 - Error reporting with pretty formatting
 - Real-time file synchronization between host and container
+- **No build required** - works directly with TypeScript sources
 
 ### Testing
 
 All packages use Vitest with consistent configuration:
 
 ```bash
-# Run all tests across all packages
+# Run all tests across all packages (requires build first)
+make build
 make test
 
 # Run tests for specific package (via Docker)
+# REQUIRES BUILD FIRST! No point of building separately, just use: make build and build ALL pkgs
 make npm cmd="run test --workspace=packages/crud"
 make npm cmd="run test --workspace=packages/json-storage"
 make npm cmd="run test --workspace=packages/async-tasks-queue"
