@@ -1,0 +1,36 @@
+{
+  "name": "@bartek01001/fadro",
+  "version": "1.0.0",
+  "description": "Rules for AI workflow",
+  "main": "index.js",
+  "files": [
+    "rules",
+    "docs",
+    "config"
+  ],
+  "bin": {
+    "fadro": "index.js"
+  },
+  "keywords": [
+    "AI",
+    "Cursor",
+    "workflow"
+  ],
+  "author": "bartek01001",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maciej-bartynski/fadro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maciej-bartynski/fadro.git/issues"
+  },
+  "homepage": "https://github.com/maciej-bartynski/fadro.git",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "echo 'Fadro package - no build needed'",
+    "test": "echo 'Fadro package - no tests needed'"
+  }
+}

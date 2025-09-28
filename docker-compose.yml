@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  bartek01001:
+    build: .
+    container_name: bartek01001
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: tail -f /dev/null

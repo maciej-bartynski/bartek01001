@@ -1,0 +1,49 @@
+{
+  "name": "@bartek01001/async-tasks-queue",
+  "version": "1.0.0",
+  "description": "A simple and efficient async tasks queue for Node.js with TypeScript support",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "imports": {
+    "#src/*.js": "./dist/src/*.js",
+    "#src/**/*.js": "./dist/src/**/*.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --pretty",
+    "test": "vitest --run",
+    "prepublishOnly": "npm run build",
+    "dev": "tsc --watch --pretty"
+  },
+  "keywords": [
+    "async",
+    "queue",
+    "tasks",
+    "typescript",
+    "nodejs",
+    "promise",
+    "sequential"
+  ],
+  "author": "bartek01001",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maciej-bartynski/async-tasks-queue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maciej-bartynski/async-tasks-queue/issues"
+  },
+  "homepage": "https://github.com/maciej-bartynski/async-tasks-queue#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

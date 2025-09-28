@@ -1,0 +1,60 @@
+{
+  "name": "@bartek01001/deep-merge",
+  "version": "1.0.0",
+  "description": "Util function to merge objects&arrays recursively",
+  "main": "dist/src/index.js",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "deep-merge",
+    "merge",
+    "objects",
+    "arrays",
+    "typescript",
+    "utility",
+    "recursive",
+    "javascript"
+  ],
+  "author": "bartek01001",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maciej-bartynski/deep-merge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maciej-bartynski/deep-merge/issues"
+  },
+  "homepage": "https://github.com/maciej-bartynski/deep-merge#readme",
+  "imports": {
+    "#src/*.js": "./dist/src/*.js",
+    "#src/**/*.js": "./dist/src/**/*.js"
+  },
+  "scripts": {
+    "dev": "concurrently \"tsc --watch --pretty\" \"vitest --watch\"",
+    "test": "vitest --run --reporter=verbose --silent=false",
+    "build": "tsc --pretty",
+    "start": "node dist/src/index.js",
+    "prepublishOnly": "npm run build",
+    "safe-install": "npm ci"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.12",
+    "concurrently": "^9.2.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

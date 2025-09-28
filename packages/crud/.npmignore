@@ -1,0 +1,45 @@
+# Source files
+src/
+tests/
+
+# Development files
+docs/
+.cursor/
+.git/
+.gitignore
+
+# Configuration files
+tsconfig.json
+vitest.config.ts
+*.config.js
+*.config.ts
+
+# Development dependencies
+node_modules/
+
+# Build artifacts (will be included via "files" in package.json)
+# dist/ is explicitly included
+
+# Data files
+data/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

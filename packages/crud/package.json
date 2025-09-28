@@ -1,0 +1,71 @@
+{
+  "name": "@bartek01001/crud",
+  "version": "1.0.0",
+  "description": "Automated CRUD endpoints for JSON file storage in Express.js applications",
+  "main": "dist/src/index.js",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "crud",
+    "express",
+    "json",
+    "file-storage",
+    "api",
+    "rest",
+    "nodejs"
+  ],
+  "author": "bartek01001",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maciej-bartynski/crud.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maciej-bartynski/crud/issues"
+  },
+  "homepage": "https://github.com/maciej-bartynski/crud#readme",
+  "imports": {
+    "#src/*.js": "./dist/src/*.js",
+    "#src/**/*.js": "./dist/src/**/*.js"
+  },
+  "scripts": {
+    "dev": "concurrently \"tsc --watch --pretty\" \"vitest --watch\"",
+    "test": "vitest --run --reporter=verbose --silent=false",
+    "build": "tsc --pretty",
+    "start": "node dist/src/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.12",
+    "@types/supertest": "^6.0.3",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@bartek01001/async-tasks-queue": "*",
+    "@bartek01001/json-storage": "*",
+    "express": ">=5.0.0",
+    "uuid": "^11.1.0"
+  },
+  "peerDependencies": {
+    "express": ">=5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

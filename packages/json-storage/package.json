@@ -1,0 +1,50 @@
+{
+  "name": "@bartek01001/json-storage",
+  "version": "1.0.0",
+  "description": "Service to manage CURD operations on JSON files",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "imports": {
+    "#src/*.js": "./dist/src/*.js",
+    "#src/**/*.js": "./dist/src/**/*.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --pretty --project tsconfig.build.json",
+    "test": "vitest --run",
+    "prepublishOnly": "npm run build",
+    "dev": "vitest"
+  },
+  "keywords": [
+    "JSON",
+    "nodejs",
+    "filesystem",
+    "CRUD",
+    "esm"
+  ],
+  "author": "bartek01001",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maciej-bartynski/json-storage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maciej-bartynski/json-storage.git/issues"
+  },
+  "homepage": "https://github.com/maciej-bartynski/json-storage.git#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@bartek01001/async-tasks-queue": "*"
+  }
+}

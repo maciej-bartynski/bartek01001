@@ -1,0 +1,86 @@
+---
+globs: *md, *.mdc,*config*
+alwaysApply: false
+---
+# Documentation Rules
+
+## Technical Accuracy Requirements
+**ALWAYS verify technical claims against actual project files**: Before documenting any technical detail, verify it against the actual project configuration
+**NEVER assume version numbers**: Always check package.json, tsconfig.json, and other config files for exact versions
+**Verify all commands work**: Test every documented command to ensure it functions as described
+**Check configuration details**: Verify all documented configuration options match actual project settings
+
+## Content Verification Process
+**Mandatory verification steps**:
+1. After creating any documentation, immediately read it back to verify content
+2. Test all documented commands and workflows
+3. Verify all technical specifications against actual project files
+4. Confirm no duplicate information exists between files
+5. Ensure all paths and file references are correct
+
+## Error Prevention Rules
+**If documentation appears empty after creation**: 
+- Immediately re-apply the content
+- Investigate why the edit failed
+- Never declare completion until content is verified
+- Log the issue in task-log.md for transparency
+
+**If technical inaccuracies are found**:
+- Correct them immediately
+- Document the correction in task-log.md
+- Verify the correction resolves the issue
+- Test the corrected documentation
+
+## Quality Standards
+**No vague language**: Write as if every reader has zero prior knowledge of this project
+**No assumptions**: Explicitly state all steps, paths, commands, and configurations
+**Consistent terminology**: Use the same terms across all documentation files
+**Actionable content**: Every instruction must be specific and executable
+**No made-up information**: Only document what actually exists in the project
+
+## Testing Documentation
+**Before declaring complete**: Test all documented workflows
+**If testing fails**: Document errors and ask user how to proceed
+**Proactive testing**: Test before declaring documentation complete
+**Test coverage**: Verify all commands, workflows, and examples work as documented
+# Documentation Rules
+
+## Technical Accuracy Requirements
+**ALWAYS verify technical claims against actual project files**: Before documenting any technical detail, verify it against the actual project configuration
+**NEVER assume version numbers**: Always check package.json, tsconfig.json, and other config files for exact versions
+**Verify all commands work**: Test every documented command to ensure it functions as described
+**Check configuration details**: Verify all documented configuration options match actual project settings
+
+## Content Verification Process
+**Mandatory verification steps**:
+1. After creating any documentation, immediately read it back to verify content
+2. Test all documented commands and workflows
+3. Verify all technical specifications against actual project files
+4. Confirm no duplicate information exists between files
+5. Ensure all paths and file references are correct
+
+## Error Prevention Rules
+**If documentation appears empty after creation**: 
+- Immediately re-apply the content
+- Investigate why the edit failed
+- Never declare completion until content is verified
+- Log the issue in task-log.md for transparency
+
+**If technical inaccuracies are found**:
+- Correct them immediately
+- Document the correction in task-log.md
+- Verify the correction resolves the issue
+- Test the corrected documentation
+
+## Quality Standards
+**No vague language**: Write as if every reader has zero prior knowledge of this project
+**No assumptions**: Explicitly state all steps, paths, commands, and configurations
+**Consistent terminology**: Use the same terms across all documentation files
+**Actionable content**: Every instruction must be specific and executable
+**No made-up information**: Only document what actually exists in the project
+
+## Testing Documentation
+**Before declaring complete**: Test all documented workflows
+**If testing fails**: Document errors and ask user how to proceed
+**Proactive testing**: Test before declaring documentation complete
+**Test coverage**: Verify all commands, workflows, and examples work as documented
