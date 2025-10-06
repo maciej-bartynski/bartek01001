@@ -1,4 +1,4 @@
-# @bartek01001/json-storage
+# @bartek0x1001/json-storage
 
 A TypeScript library for managing CRUD operations on JSON files with MongoDB-like filtering capabilities.
 
@@ -18,13 +18,13 @@ JSON Storage provides a file-based storage solution that mimics database operati
 ## Installation
 
 ```bash
-npm install @bartek01001/json-storage
+npm install @bartek0x1001/json-storage
 ```
 
 ## Quick Start
 
 ```typescript
-import JSONStorage from '@bartek01001/json-storage';
+import JSONStorage from '@bartek0x1001/json-storage';
 
 // Get singleton instance
 const jsonStorage = JSONStorage.getInstance({ directory: './data' });

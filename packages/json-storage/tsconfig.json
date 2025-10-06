@@ -1,20 +1,17 @@
 {
+    "extends": "../../tsconfig.root.json",
+    "include": [
+        "src/**/*",
+    ],
+    "exclude": [
+        "node_modules",
+    ],
     "compilerOptions": {
-        "types": [
-            "vitest/globals"
-        ],
-        "module": "NodeNext",
         "esModuleInterop": false,
-        "target": "ES2024",
-        "moduleResolution": "NodeNext",
-        "sourceMap": true,
         "outDir": "dist",
-        "baseUrl": ".",
-        "declaration": true,
-        "declarationMap": true,
-        "strict": true,
-        "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
+        "rootDir": "./src",
+        "baseUrl": ".",
         "paths": {
             "#src/*": [
                 "src/*"
@@ -22,15 +19,6 @@
             "tests/*": [
                 "tests/*"
             ]
-        }
+        },
     },
-    "include": [
-        "src/**/*",
-        "index.ts",
-        "tests/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist",
-    ]
 }

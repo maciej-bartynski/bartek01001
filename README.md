@@ -1,19 +1,19 @@
-# @bartek01001 Monorepo
+# @bartek0x1001 Monorepo
 
 A TypeScript monorepo containing utility packages for Node.js development, featuring async task management, data manipulation, and Express.js integration.
 
 ## Packages
 
 ### Core Utilities
-- **[@bartek01001/async-tasks-queue](https://github.com/maciej-bartynski/async-tasks-queue)** - Sequential async task processing with TypeScript support
-- **[@bartek01001/deep-merge](https://github.com/maciej-bartynski/deep-merge)** - Deep merge utility for objects and arrays
+- **[@bartek0x1001/async-tasks-queue](https://github.com/maciej-bartynski/async-tasks-queue)** - Sequential async task processing with TypeScript support
+- **[@bartek0x1001/deep-merge](https://github.com/maciej-bartynski/deep-merge)** - Deep merge utility for objects and arrays
 
 ### Storage & API
-- **[@bartek01001/json-storage](https://github.com/maciej-bartynski/json-storage)** - CRUD operations on JSON files with async queue management
-- **[@bartek01001/crud](https://github.com/maciej-bartynski/crud)** - Automated Express.js CRUD endpoints for JSON file storage
+- **[@bartek0x1001/json-storage](https://github.com/maciej-bartynski/json-storage)** - CRUD operations on JSON files with async queue management
+- **[@bartek0x1001/crud](https://github.com/maciej-bartynski/crud)** - Automated Express.js CRUD endpoints for JSON file storage
 
 ### Development Framework
-- **[@bartek01001/fadro](https://github.com/maciej-bartynski/fadro)** - AI workflow rules framework for development processes
+- **[@bartek0x1001/fadro](https://github.com/maciej-bartynski/fadro)** - AI workflow rules framework for development processes
 
 ## Technical Stack
 
@@ -34,26 +34,26 @@ Install individual packages as needed:
 
 ```bash
 # Async task queue
-npm install @bartek01001/async-tasks-queue
+npm install @bartek0x1001/async-tasks-queue
 
 # Deep merge utility
-npm install @bartek01001/deep-merge
+npm install @bartek0x1001/deep-merge
 
 # JSON file storage
-npm install @bartek01001/json-storage
+npm install @bartek0x1001/json-storage
 
 # Express.js CRUD endpoints
-npm install @bartek01001/crud
+npm install @bartek0x1001/crud
 
 # AI workflow framework
-npm install @bartek01001/fadro
+npm install @bartek0x1001/fadro
 ```
 
 ### Basic Usage
 
 #### Async Tasks Queue
 ```typescript
-import AsyncTasksQueue from '@bartek01001/async-tasks-queue';
+import AsyncTasksQueue from '@bartek0x1001/async-tasks-queue';
 
 const queue = new AsyncTasksQueue();
 
@@ -65,7 +65,7 @@ const result = await queue.enqueue(async () => {
 
 #### Deep Merge
 ```typescript
-import deepMerge from '@bartek01001/deep-merge';
+import deepMerge from '@bartek0x1001/deep-merge';
 
 const merged = deepMerge(
     { user: { name: 'John', age: 30 } },
@@ -76,7 +76,7 @@ const merged = deepMerge(
 
 #### JSON Storage
 ```typescript
-import { JSONStorage } from '@bartek01001/json-storage';
+import { JSONStorage } from '@bartek0x1001/json-storage';
 
 const storage = JSONStorage.getInstance({ directory: './data' });
 const connection = await storage.connect({ maxFileAmount: 1000 });
@@ -91,7 +91,7 @@ await connection.delete(item.id);
 #### Express.js CRUD
 ```typescript
 import express from 'express';
-import { CRUDServer } from '@bartek01001/crud';
+import { CRUDServer } from '@bartek0x1001/crud';
 
 const app = express();
 const crudServer = new CRUDServer({
@@ -106,11 +106,11 @@ await crudServer.start();
 ## Package Relationships
 
 ```
-@bartek01001/fadro (standalone)
-@bartek01001/async-tasks-queue (core utility)
-@bartek01001/deep-merge (core utility)
-@bartek01001/json-storage (depends on async-tasks-queue)
-@bartek01001/crud (depends on async-tasks-queue + json-storage)
+@bartek0x1001/fadro (standalone)
+@bartek0x1001/async-tasks-queue (core utility)
+@bartek0x1001/deep-merge (core utility)
+@bartek0x1001/json-storage (depends on async-tasks-queue)
+@bartek0x1001/crud (depends on async-tasks-queue + json-storage)
 ```
 
 ## Development
@@ -173,4 +173,4 @@ All packages are licensed under MIT or ISC licenses. See individual package dire
 
 ## Author
 
-**bartek01001** - [GitHub](https://github.com/maciej-bartynski)
+**bartek0x1001** - [GitHub](https://github.com/maciej-bartynski)

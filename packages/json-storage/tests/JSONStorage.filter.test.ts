@@ -1,5 +1,6 @@
 import * as fs from 'fs/promises';
 import JSONStorage from '#src/JSONStorage.js';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 
 describe('Field equality', () => {
     let testStorage: JSONStorage;

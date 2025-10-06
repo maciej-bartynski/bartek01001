@@ -1,5 +1,5 @@
 {
-  "name": "@bartek01001/fadro",
+  "name": "@bartek0x1001/fadro",
   "version": "1.0.0",
   "description": "Rules for AI workflow",
   "main": "index.js",
@@ -16,7 +16,7 @@
     "Cursor",
     "workflow"
   ],
-  "author": "bartek01001",
+  "author": "bartek0x1001",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
 import AsyncTasksQueue from '#src/AsyncTasksQueue.js';
+import { describe, it, expect } from 'vitest';
 
 describe('AsyncQueue should work', () => {
-
-    it.only('Prove that paralell promises resolve in order of timeout, not in order of enqueue', async () => {
+    it('Prove that paralell promises resolve in order of timeout, not in order of enqueue', async () => {
         let result = '';
         await Promise.all([
             (async () => {

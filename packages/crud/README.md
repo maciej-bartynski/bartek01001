@@ -11,7 +11,7 @@ A lightweight Node.js package that automatically generates CRUD (Create, Read, U
 - **Automatic CRUD endpoints** - Generate full CRUD operations for any path
 - **Generic data handling** - Works with any JSON data structure
 - **Dynamic path creation** - Create endpoints on-the-fly
-- **JSON file storage** - Built-in persistent storage using `@bartek01001/json-storage`
+- **JSON file storage** - Built-in persistent storage using `@bartek0x1001/json-storage`
 - **Express.js integration** - Seamlessly integrates with existing Express apps
 - **TypeScript support** - Full TypeScript definitions included
 - **Method chaining** - Fluent API for easy configuration
@@ -209,7 +209,7 @@ app.listen(3000);
 
 - **Runtime**: Node.js 18+ (ES2024 features)
 - **Framework**: Express.js 5.1.0+
-- **Storage**: `@bartek01001/json-storage` for JSON file persistence
+- **Storage**: `@bartek0x1001/json-storage` for JSON file persistence
 - **TypeScript**: Full type definitions included
 - **ESM**: Native ES modules support
 

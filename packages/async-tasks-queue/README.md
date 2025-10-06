@@ -13,13 +13,13 @@ A simple and efficient async tasks queue for Node.js with TypeScript support. Th
 ## Installation
 
 ```bash
-npm install @bartek01001/async-tasks-queue
+npm install @bartek0x1001/async-tasks-queue
 ```
 
 ## Quick Start
 
 ```typescript
-import AsyncTasksQueue from '@bartek01001/async-tasks-queue';
+import AsyncTasksQueue from '@bartek0x1001/async-tasks-queue';
 
 const queue = new AsyncTasksQueue();
 

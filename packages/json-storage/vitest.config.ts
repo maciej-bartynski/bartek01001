@@ -1,13 +1,9 @@
 import path from 'path'
-import { defineConfig } from 'vitest/config'
+import { defineConfig, mergeConfig } from 'vitest/config'
+import globalConfig from '../../vitest.config.root.ts'
 
-export default defineConfig({
+export default defineConfig(mergeConfig(globalConfig, {
     test: {
-        globals: true,
-        environment: 'node',
-        include: ['tests/**/*.test.ts'],
-        exclude: ['node_modules'],
-        testTimeout: 10000,
         sequence: {
             concurrent: false,
         },
@@ -20,7 +16,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '#src': path.resolve(__dirname, 'dist/src'),
+            '#src': path.resolve(__dirname, 'dist'),
         }
     }
-})
+}))

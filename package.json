@@ -1,36 +1,31 @@
 {
-    "name": "@bartek01001",
+    "name": "@bartek0x1001",
     "version": "1.0.0",
-    "description": "bartek01001 packages monorepo",
+    "description": "bartek0x1001 packages monorepo",
     "private": true,
     "workspaces": [
         "packages/*"
     ],
     "scripts": {
-        "build": "npm run build --workspaces",
-        "test": "npm run test --workspaces",
         "dev": "echo 'Use: npm run dev --workspace=packages/PACKAGE_NAME' && echo 'Available packages: async-tasks-queue, crud, deep-merge, json-storage'",
-        "dev:crud": "npm run dev --workspace=packages/crud",
-        "dev:async-tasks-queue": "npm run dev --workspace=packages/async-tasks-queue",
-        "dev:deep-merge": "npm run dev --workspace=packages/deep-merge",
-        "dev:json-storage": "npm run dev --workspace=packages/json-storage",
-        "install-all": "npm ci",
-        "clean": "npm run clean --workspaces && rm -rf node_modules",
         "changeset": "changeset",
-        "version-packages": "changeset version",
-        "release": "changeset publish"
+        "changeset-version": "changeset version",
+        "changeset-publish": "changeset publish"
     },
     "keywords": [
-        "bartek01001",
+        "bartek0x1001",
         "monorepo",
         "NPM modules",
         "typescript",
         "nodejs"
     ],
-    "author": "bartek01001",
+    "author": "bartek0x1001",
     "license": "MIT",
     "devDependencies": {
         "@changesets/cli": "^2.27.1",
-        "concurrently": "^9.2.1"
+        "concurrently": "^9.2.1",
+        "typescript": "^5.8.3",
+        "vitest": "^3.2.4",
+        "@types/node": "22.18.8"
     }
 }

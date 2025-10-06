@@ -1,6 +1,6 @@
 # Development Guide
 
-Complete technical guide for developing, maintaining, and deploying the @bartek01001 monorepo packages.
+Complete technical guide for developing, maintaining, and deploying the @bartek0x1001 monorepo packages.
 
 ## Prerequisites
 
@@ -11,13 +11,13 @@ Complete technical guide for developing, maintaining, and deploying the @bartek0
 ## Project Structure
 
 ```
-bartek01001/ (monorepo root)
+bartek0x1001/ (monorepo root)
 ├── packages/ (all NPM packages)
-│   ├── async-tasks-queue/ (@bartek01001/async-tasks-queue)
-│   ├── deep-merge/ (@bartek01001/deep-merge)
-│   ├── json-storage/ (@bartek01001/json-storage)
-│   ├── crud/ (@bartek01001/crud)
-│   └── fadro/ (@bartek01001/fadro)
+│   ├── async-tasks-queue/ (@bartek0x1001/async-tasks-queue)
+│   ├── deep-merge/ (@bartek0x1001/deep-merge)
+│   ├── json-storage/ (@bartek0x1001/json-storage)
+│   ├── crud/ (@bartek0x1001/crud)
+│   └── fadro/ (@bartek0x1001/fadro)
 ├── docs/ (documentation)
 ├── Dockerfile (container configuration)
 ├── docker-compose.yml (container orchestration)
@@ -34,7 +34,7 @@ This monorepo uses Docker for consistent development across all packages:
 ```bash
 # Clone repository
 git clone <repository-url>
-cd bartek01001
+cd bartek0x1001
 
 # Build and start Docker container
 make setup
@@ -217,11 +217,11 @@ make npm cmd="run build --workspace=packages/json-storage"
 ```json
 {
   "dependencies": {
-    "@bartek01001/async-tasks-queue": "*",
-    "@bartek01001/json-storage": "*"
+    "@bartek0x1001/async-tasks-queue": "*",
+    "@bartek0x1001/json-storage": "*"
   },
   "devDependencies": {
-    "@bartek01001/fadro": "*",
+    "@bartek0x1001/fadro": "*",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }

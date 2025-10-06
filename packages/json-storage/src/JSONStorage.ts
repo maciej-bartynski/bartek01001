@@ -1,6 +1,6 @@
 import * as fs from "fs/promises";
 import { JSONStorageDocument, Filter, FileMetadata, DirectoryStats } from "#src/JSONStorage.types.js";
-import AsyncTasksQueue from "@bartek01001/async-tasks-queue";
+import AsyncTasksQueue from "@bartek0x1001/async-tasks-queue";
 import * as crypto from "crypto";
 
 class JSONStorage {

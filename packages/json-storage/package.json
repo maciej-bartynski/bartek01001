@@ -1,23 +1,22 @@
 {
-  "name": "@bartek01001/json-storage",
+  "name": "@bartek0x1001/json-storage",
   "version": "1.0.0",
   "description": "Service to manage CURD operations on JSON files",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "imports": {
-    "#src/*.js": "./dist/src/*.js",
-    "#src/**/*.js": "./dist/src/**/*.js"
+    "#src/*.js": "./dist/*.js",
+    "#src/**/*.js": "./dist/**/*.js"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "scripts": {
-    "build": "tsc --pretty --project tsconfig.build.json",
+    "build": "tsc --build --force --pretty",
     "test": "vitest --run",
-    "prepublishOnly": "npm run build",
-    "dev": "vitest"
+    "dev": "concurrently \"tsc --watch --pretty\" \"vitest --watch\""
   },
   "keywords": [
     "JSON",
@@ -26,7 +25,7 @@
     "CRUD",
     "esm"
   ],
-  "author": "bartek01001",
+  "author": "bartek0x1001",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -39,12 +38,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@types/node": "^24.0.14",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
-  },
   "dependencies": {
-    "@bartek01001/async-tasks-queue": "*"
+    "@bartek0x1001/async-tasks-queue": "*"
   }
 }

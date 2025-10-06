@@ -190,8 +190,8 @@ npm pack
 
 ### Production Dependencies
 - `express`: Web framework (peer dependency)
-- `@bartek01001/json-storage`: File-based storage
-- `@bartek01001/async-tasks-queue`: Task queue management
+- `@bartek0x1001/json-storage`: File-based storage
+- `@bartek0x1001/async-tasks-queue`: Task queue management
 - `uuid`: Unique identifier generation
 
 ### Development Dependencies

@@ -1,10 +1,10 @@
 # Development Guide
 
-This document provides comprehensive technical information for developing, testing, and maintaining the `@bartek01001/deep-merge` project.
+This document provides comprehensive technical information for developing, testing, and maintaining the `@bartek0x1001/deep-merge` project.
 
 ## Project Overview
 
-**@bartek01001/deep-merge** is a TypeScript utility library that provides deep merging functionality for objects and arrays. The project is structured as an NPM package with full TypeScript support, comprehensive testing, and modern build tooling.
+**@bartek0x1001/deep-merge** is a TypeScript utility library that provides deep merging functionality for objects and arrays. The project is structured as an NPM package with full TypeScript support, comprehensive testing, and modern build tooling.
 
 ## Technology Stack
 

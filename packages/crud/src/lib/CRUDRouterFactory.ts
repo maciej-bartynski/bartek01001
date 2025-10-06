@@ -1,4 +1,4 @@
-import JSONStoragePackage from "@bartek01001/json-storage";
+import JSONStoragePackage from "@bartek0x1001/json-storage";
 import { Router, Request, Response } from "express";
 import { CRUDPathConfig, CRUDResponse, CRUDDeleteResponse, CRUDListResponse, CRUDItemResponse } from "./types.js";
 import deepMergeObjects from "#src/utils/deepMergeObjects/deepMergeObjects.js";

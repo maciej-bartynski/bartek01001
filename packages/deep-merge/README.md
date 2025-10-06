@@ -1,4 +1,4 @@
-# @bartek01001/deep-merge
+# @bartek0x1001/deep-merge
 
 A TypeScript utility function for recursively merging objects and arrays with configurable strategies.
 
@@ -13,7 +13,7 @@ A TypeScript utility function for recursively merging objects and arrays with co
 ## Installation
 
 ```bash
-npm install @bartek01001/deep-merge
+npm install @bartek0x1001/deep-merge
 ```
 
 **Note**: This package enforces the use of `npm ci` for dependency installation. If you encounter installation errors, use `npm ci` instead of `npm install`.
@@ -21,7 +21,7 @@ npm install @bartek01001/deep-merge
 ## Quick Start
 
 ```typescript
-import deepMergeObjects from '@bartek01001/deep-merge';
+import deepMergeObjects from '@bartek0x1001/deep-merge';
 
 const source = {
   name: 'John',

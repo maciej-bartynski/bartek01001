@@ -171,10 +171,10 @@ Automatically runs build before publishing to ensure latest code is compiled.
 ## Environment and Dependencies
 
 ### Production Dependencies
-- `@bartek01001/async-tasks-queue` - Concurrency control
+- `@bartek0x1001/async-tasks-queue` - Concurrency control
 
 ### Development Dependencies
-- `@bartek01001/fadro` - Development framework
+- `@bartek0x1001/fadro` - Development framework
 - `@types/node` - Node.js type definitions
 - `typescript` - TypeScript compiler
 - `vitest` - Testing framework

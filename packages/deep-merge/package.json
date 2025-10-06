@@ -1,5 +1,5 @@
 {
-  "name": "@bartek01001/deep-merge",
+  "name": "@bartek0x1001/deep-merge",
   "version": "1.0.0",
   "description": "Util function to merge objects&arrays recursively",
   "main": "dist/src/index.js",
@@ -9,8 +9,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/src/index.js",
-      "types": "./dist/src/index.d.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
@@ -26,7 +26,7 @@
     "recursive",
     "javascript"
   ],
-  "author": "bartek01001",
+  "author": "bartek0x1001",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -37,24 +37,12 @@
   },
   "homepage": "https://github.com/maciej-bartynski/deep-merge#readme",
   "imports": {
-    "#src/*.js": "./dist/src/*.js",
-    "#src/**/*.js": "./dist/src/**/*.js"
+    "#src/*.js": "./dist/*.js",
+    "#src/**/*.js": "./dist/**/*.js"
   },
   "scripts": {
     "dev": "concurrently \"tsc --watch --pretty\" \"vitest --watch\"",
     "test": "vitest --run --reporter=verbose --silent=false",
-    "build": "tsc --pretty",
-    "start": "node dist/src/index.js",
-    "prepublishOnly": "npm run build",
-    "safe-install": "npm ci"
-  },
-  "devDependencies": {
-    "@types/node": "^24.0.12",
-    "concurrently": "^9.2.0",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "build": "tsc --build --force --pretty"
   }
 }

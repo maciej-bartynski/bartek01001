@@ -1,6 +1,7 @@
 dist
 node_modules
 .cursor
+tsconfig.tsbuildinfo
 
 # Fadro
 docs/task-log.md

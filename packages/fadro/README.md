@@ -5,7 +5,7 @@
 
 1. Installation
 ```bash
-npm install --save-dev @bartek01001/fadro@latest
+npm install --save-dev @bartek0x1001/fadro@latest
 ```
 
 2. Configuration

@@ -6,7 +6,7 @@ This document provides comprehensive technical guidance for developing, maintain
 
 **Type**: NPM Package (TypeScript)  
 **Purpose**: Sequential async task execution for Node.js  
-**Package**: `@bartek01001/async-tasks-queue`  
+**Package**: `@bartek0x1001/async-tasks-queue`  
 **Version**: 2.0.0  
 
 ## Technical Stack
@@ -204,7 +204,7 @@ npm publish
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `@bartek01001/fadro` | ^4.0.0 | Development workflow framework |
+| `@bartek0x1001/fadro` | ^4.0.0 | Development workflow framework |
 | `@types/node` | ^24.1.0 | Node.js type definitions |
 | `typescript` | ^5.8.3 | TypeScript compiler |
 | `vitest` | ^3.2.4 | Testing framework |
