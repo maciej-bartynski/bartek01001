@@ -72,6 +72,9 @@ make release               # Publish packages to NPM (main branch)
 make clean                 # Clean all build artifacts
 make npm cmd="..."         # Run npm command in container
 make docker cmd="..."      # Run docker-compose command
+make restart               # Restart existing container
+make stop                  # Stop container
+make uninstall-fadro       # Uninstall fadro from all packages
 ```
 
 ## Development Workflows

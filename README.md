@@ -163,6 +163,16 @@ make test                  # Run all tests
 make clean                 # Clean build artifacts
 make npm cmd="..."         # Run npm command in container
 make docker cmd="..."      # Run docker-compose command
+make restart               # Restart existing container
+make stop                  # Stop container
+make dev-crud              # Start development mode for crud package
+make dev-async-tasks-queue # Start development mode for async-tasks-queue package
+make dev-deep-merge        # Start development mode for deep-merge package
+make dev-json-storage      # Start development mode for json-storage package
+make changeset             # Create new changeset
+make version               # Bump versions based on changesets
+make release               # Publish packages to NPM
+make uninstall-fadro       # Uninstall fadro from all packages
 ```
 
 For detailed development setup, testing, and contribution guidelines, see [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md).

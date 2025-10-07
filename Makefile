@@ -99,13 +99,13 @@ stop:
 	docker-compose stop
 
 changeset:
-	docker exec bartek0x1001 npx changeset
+	docker exec bartek0x1001 npm run changeset
 
 version:
-	docker exec bartek0x1001 npx changeset version
+	docker exec bartek0x1001 npm run changeset-version
 
 release:
-	docker exec bartek0x1001 npx changeset publish
+	docker exec bartek0x1001 npm run changeset-publish
 
 uninstall-fadro:
 	@echo "Uninstalling @bartek0x1001/fadro from all packages..."
