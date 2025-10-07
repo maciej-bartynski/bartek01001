@@ -1,7 +1,7 @@
 {
   "name": "@bartek0x1001/crud",
   "version": "1.0.0",
-  "description": "Automated CRUD endpoints for JSON file storage in Express.js applications",
+  "description": "Automated CRUD endpoints for JSON file storage - supports both Express.js and bare Node.js servers",
   "main": "dist/index.js",
   "type": "module",
   "publishConfig": {
@@ -19,11 +19,13 @@
   "keywords": [
     "crud",
     "express",
+    "nodejs",
+    "bare-nodejs",
     "json",
     "file-storage",
     "api",
     "rest",
-    "nodejs"
+    "dual-mode"
   ],
   "author": "bartek0x1001",
   "license": "MIT",
@@ -36,14 +38,13 @@
   },
   "homepage": "https://github.com/maciej-bartynski/crud#readme",
   "imports": {
-    "#src/*.js": "./dist/src/*.js",
-    "#src/**/*.js": "./dist/src/**/*.js"
+    "#src/*.js": "./dist/*.js",
+    "#src/**/*.js": "./dist/**/*.js"
   },
   "scripts": {
     "dev": "concurrently \"tsc --watch --pretty\" \"vitest --watch\"",
     "test": "vitest --run --reporter=verbose --silent=false",
-    "build": "tsc --build --force --pretty",
-    "start": "node dist/src/index.js"
+    "build": "tsc --build --force --pretty"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
@@ -53,7 +54,14 @@
   "dependencies": {
     "@bartek0x1001/async-tasks-queue": "^1.0.0",
     "@bartek0x1001/json-storage": "^1.0.0",
-    "express": ">=5.0.0",
     "uuid": "^11.1.0"
+  },
+  "peerDependencies": {
+    "express": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    }
   }
 }

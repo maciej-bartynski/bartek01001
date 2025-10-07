@@ -1,5 +1,5 @@
 import express from 'express';
-import { CRUDServer } from 'crud-server';
+import { CRUDServer } from '@bartek0x1001/crud';
 
 const app = express();
 app.use(express.json());

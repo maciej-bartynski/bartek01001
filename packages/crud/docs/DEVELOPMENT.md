@@ -1,6 +1,6 @@
 # Development Guide
 
-This document provides comprehensive technical guidance for developing, testing, and deploying the @bartek0x1001/crud NPM package.
+This document provides comprehensive technical guidance for developing, testing, and deploying the @bartek0x1001/crud NPM package with dual-mode support for both Express.js and bare Node.js servers.
 
 ## Project Structure
 
@@ -8,8 +8,15 @@ This document provides comprehensive technical guidance for developing, testing,
 crud/
 ├── src/
 │   ├── lib/                    # Core package library
-│   │   ├── CRUDServer.ts       # Main CRUDServer class
-│   │   ├── CRUDRouterFactory.ts # CRUD router generator
+│   │   ├── CRUDServer.ts       # Main CRUDServer class (dual-mode)
+│   │   ├── CRUDRouterFactory.ts # CRUD router generator (dual-mode)
+│   │   ├── ServerAdapter.ts    # Adapter interface for dual-mode
+│   │   ├── ExpressAdapter.ts   # Express.js adapter
+│   │   ├── BareNodeAdapter.ts  # Bare Node.js adapter
+│   │   ├── BareHTTPServer.ts   # Bare Node.js HTTP server
+│   │   ├── BareRequest.ts      # Bare Node.js request wrapper
+│   │   ├── BareResponse.ts     # Bare Node.js response wrapper
+│   │   ├── BareRouter.ts       # Bare Node.js router
 │   │   └── types.ts            # TypeScript interfaces
 │   └── index.ts                # Package entry point
 ├── tests/                      # Test files for package functionality
@@ -189,20 +196,25 @@ npm pack
 ## Dependencies
 
 ### Production Dependencies
-- `express`: Web framework (peer dependency)
 - `@bartek0x1001/json-storage`: File-based storage
 - `@bartek0x1001/async-tasks-queue`: Task queue management
 - `uuid`: Unique identifier generation
 
+### Peer Dependencies (Optional)
+- `express`: >=5.0.0 (optional - only needed for Express.js mode)
+
 ### Development Dependencies
 - `typescript`: TypeScript compiler
 - `vitest`: Test runner
-- `@types/express`: Express type definitions
+- `@types/express`: Express type definitions (for testing)
 - `@types/node`: Node.js type definitions
 - `concurrently`: Run multiple commands simultaneously
+- `supertest`: HTTP testing library
 
-### Peer Dependencies
-- `express`: >=5.0.0 (users must provide Express.js)
+### Dual-Mode Architecture
+- **Express.js mode**: Uses Express.js framework (requires express peer dependency)
+- **Bare Node.js mode**: Uses built-in Node.js HTTP server (zero external dependencies)
+- **Auto-detection**: Automatically chooses mode based on Express availability
 
 ## Coding Standards
 
