@@ -40,10 +40,10 @@ install:
 	@echo "Installing NPM packages with INSTALL_MODE=$(INSTALL_MODE)"
 	@if [ "$(INSTALL_MODE)" = "unsafe-install" ]; then \
 		echo "Running in unsafe-install mode..."; \
-		docker exec bartek0x1001 npm install; \
+		docker exec -t bartek0x1001 npm install; \
 	else \
 		echo "Running in ci mode..."; \
-		docker exec bartek0x1001 npm ci; \
+		docker exec -t bartek0x1001 npm ci; \
 	fi
 
 build:
@@ -53,31 +53,31 @@ build:
 	rm -rf packages/json-storage/dist
 	rm -rf packages/crud/dist
 	@echo "Building all packages in container..."
-	docker exec bartek0x1001 npm run build --workspace=packages/async-tasks-queue
-	docker exec bartek0x1001 npm run build --workspace=packages/deep-merge
-	docker exec bartek0x1001 npm run build --workspace=packages/json-storage
-	docker exec bartek0x1001 npm run build --workspace=packages/crud
+	docker exec -t bartek0x1001 npm run build --workspace=packages/async-tasks-queue
+	docker exec -t bartek0x1001 npm run build --workspace=packages/deep-merge
+	docker exec -t bartek0x1001 npm run build --workspace=packages/json-storage
+	docker exec -t bartek0x1001 npm run build --workspace=packages/crud
 
 npm:
-	docker exec bartek0x1001 npm $(cmd)
+	docker exec -t bartek0x1001 npm $(cmd)
 
 docker:
 	docker-compose $(cmd)
 
 test:
-	docker exec bartek0x1001 npm run test --workspaces
+	docker exec -t bartek0x1001 npm run test --workspaces
 
 dev-crud:
-	docker exec bartek0x1001 npm run dev --workspace=packages/crud
+	docker exec -t bartek0x1001 npm run dev --workspace=packages/crud
 
 dev-async-tasks-queue:
-	docker exec bartek0x1001 npm run dev --workspace=packages/async-tasks-queue
+	docker exec -t bartek0x1001 npm run dev --workspace=packages/async-tasks-queue
 
 dev-deep-merge:
-	docker exec bartek0x1001 npm run dev --workspace=packages/deep-merge
+	docker exec -t bartek0x1001 npm run dev --workspace=packages/deep-merge
 
 dev-json-storage:
-	docker exec bartek0x1001 npm run dev --workspace=packages/json-storage
+	docker exec -t bartek0x1001 npm run dev --workspace=packages/json-storage
 
 clean:
 	rm -rf node_modules
@@ -99,17 +99,17 @@ stop:
 	docker-compose stop
 
 changeset:
-	docker exec bartek0x1001 npm run changeset
+	docker exec -t bartek0x1001 npm run changeset
 
 version:
-	docker exec bartek0x1001 npm run changeset-version
+	docker exec -t bartek0x1001 npm run changeset-version
 
 release:
-	docker exec bartek0x1001 npm run changeset-publish
+	docker exec -t bartek0x1001 npm run changeset-publish
 
 uninstall-fadro:
 	@echo "Uninstalling @bartek0x1001/fadro from all packages..."
-	docker exec bartek0x1001 npm uninstall @bartek0x1001/fadro --workspace=packages/async-tasks-queue
-	docker exec bartek0x1001 npm uninstall @bartek0x1001/fadro --workspace=packages/deep-merge
-	docker exec bartek0x1001 npm uninstall @bartek0x1001/fadro --workspace=packages/json-storage
-	docker exec bartek0x1001 npm uninstall @bartek0x1001/fadro --workspace=packages/crud
+	docker exec -t bartek0x1001 npm uninstall @bartek0x1001/fadro --workspace=packages/async-tasks-queue
+	docker exec -t bartek0x1001 npm uninstall @bartek0x1001/fadro --workspace=packages/deep-merge
+	docker exec -t bartek0x1001 npm uninstall @bartek0x1001/fadro --workspace=packages/json-storage
+	docker exec -t bartek0x1001 npm uninstall @bartek0x1001/fadro --workspace=packages/crud

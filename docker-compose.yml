@@ -8,4 +8,6 @@ services:
       - .:/app
     environment:
       - NODE_ENV=development
+      - FORCE_COLOR=1
+      - TERM=${TERM:-xterm-256color}
     command: tail -f /dev/null
