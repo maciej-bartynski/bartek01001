@@ -1,7 +1,6 @@
 import { ServerResponse } from 'http';
-import { ResponseAdapter } from './ServerAdapter.js';
 
-export class BareResponse implements ResponseAdapter {
+export class BareResponse {
     private statusCode: number = 200;
     private headers: Record<string, string> = {};
 

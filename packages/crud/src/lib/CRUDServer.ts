@@ -1,46 +1,18 @@
-import express, { Application } from 'express';
 import { CRUDRouterFactory } from './CRUDRouterFactory.js';
 import { CRUDServerConfig, CRUDPathConfig } from './types.js';
-import { ServerAdapter } from './ServerAdapter.js';
-import { ExpressAdapter } from './ExpressAdapter.js';
-import { BareNodeAdapter } from './BareNodeAdapter.js';
 import { BareHTTPServer } from './BareHTTPServer.js';
 
-type ServerMode = 'express' | 'bare' | 'auto';
-
 export class CRUDServer {
-    private appInstance: ServerAdapter;
+    private appInstance: BareHTTPServer;
     private config: CRUDServerConfig;
     private paths: CRUDPathConfig[];
-    private mode: ServerMode;
 
-    constructor(options?: { mode?: ServerMode }) {
+    constructor() {
         this.config = { dataDirectory: 'data' };
         this.paths = [];
-        this.mode = options?.mode || 'auto';
 
-        this.appInstance = this.createServer();
+        this.appInstance = new BareHTTPServer();
         this.setupDefaultRoute();
-    }
-
-    private createServer(): ServerAdapter {
-        if (this.mode === 'bare') {
-            return new BareNodeAdapter(new BareHTTPServer());
-        }
-
-        if (this.mode === 'express') {
-            const expressApp = express();
-            expressApp.use(express.json());
-            return new ExpressAdapter(expressApp);
-        }
-
-        try {
-            const expressApp = express();
-            expressApp.use(express.json());
-            return new ExpressAdapter(expressApp);
-        } catch (error) {
-            return new BareNodeAdapter(new BareHTTPServer());
-        }
     }
 
     private setupDefaultRoute(): void {
@@ -62,17 +34,20 @@ export class CRUDServer {
 
         this.paths.push(pathConfig);
 
-        const routerAdapter = await CRUDRouterFactory.generateRouter(pathConfig, this.mode);
-        this.appInstance.use(`/${pathName}`, routerAdapter);
+        const router = await CRUDRouterFactory.generateRouter(pathConfig);
+        this.appInstance.use(`/${pathName}`, router);
 
         return this;
     }
 
-    app(): any {
-        if (this.mode === 'express' || (this.mode === 'auto' && this.appInstance instanceof ExpressAdapter)) {
-            return (this.appInstance as ExpressAdapter)['app'];
-        }
+    app(): BareHTTPServer {
         return this.appInstance;
+    }
+
+    getExpressMiddleware(): any {
+        return (req: any, res: any, next: any) => {
+            this.appInstance.handleRequest(req, res);
+        };
     }
 
     getPaths(): CRUDPathConfig[] {

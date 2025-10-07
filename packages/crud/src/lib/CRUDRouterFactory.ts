@@ -1,53 +1,27 @@
 import JSONStoragePackage from "@bartek0x1001/json-storage";
-import { Router, Request, Response } from "express";
 import { CRUDPathConfig, CRUDResponse, CRUDDeleteResponse, CRUDListResponse, CRUDItemResponse } from "./types.js";
 import deepMergeObjects from "#src/utils/deepMergeObjects/deepMergeObjects.js";
-import { RouterAdapter, RequestAdapter, ResponseAdapter } from "./ServerAdapter.js";
-import { ExpressRouterAdapter } from "./ExpressAdapter.js";
-import { BareNodeRouterAdapter } from "./BareNodeAdapter.js";
 import { BareRouter } from "./BareRouter.js";
-
-type ServerMode = 'express' | 'bare' | 'auto';
+import { BareRequest } from "./BareRequest.js";
+import { BareResponse } from "./BareResponse.js";
 
 export class CRUDRouterFactory {
-    private static async createCRUDRouter(config: CRUDPathConfig, mode: ServerMode = 'auto'): Promise<RouterAdapter> {
+    private static async createCRUDRouter(config: CRUDPathConfig): Promise<BareRouter> {
         const jsonStorage = JSONStoragePackage.getInstance({ directory: config.dataDirectory || 'data' });
         const connection = await jsonStorage.connect({ directory: config.path });
 
-        if (mode === 'express' || (mode === 'auto' && this.isExpressAvailable())) {
-            return this.createExpressRouter(connection);
-        } else {
-            return this.createBareRouter(connection);
-        }
+        return this.createBareRouter(connection);
     }
 
-    private static isExpressAvailable(): boolean {
-        try {
-            require('express');
-            return true;
-        } catch {
-            return false;
-        }
-    }
-
-    private static async createExpressRouter(connection: any): Promise<ExpressRouterAdapter> {
-        const router = Router();
-        const expressRouter = new ExpressRouterAdapter(router);
-
-        await this.setupRoutes(expressRouter, connection);
-        return expressRouter;
-    }
-
-    private static async createBareRouter(connection: any): Promise<BareNodeRouterAdapter> {
+    private static async createBareRouter(connection: any): Promise<BareRouter> {
         const router = new BareRouter();
-        const bareRouter = new BareNodeRouterAdapter(router);
 
-        await this.setupRoutes(bareRouter, connection);
-        return bareRouter;
+        await this.setupRoutes(router, connection);
+        return router;
     }
 
-    private static async setupRoutes(router: RouterAdapter, connection: any): Promise<void> {
-        router.get('/', async (req: RequestAdapter, res: ResponseAdapter) => {
+    private static async setupRoutes(router: BareRouter, connection: any): Promise<void> {
+        router.get('/', async (req: BareRequest, res: BareResponse) => {
             try {
                 const allItems = await connection.filter({
                     limit: 10,
@@ -59,7 +33,7 @@ export class CRUDRouterFactory {
             }
         });
 
-        router.get('/:fileId', async (req: RequestAdapter, res: ResponseAdapter) => {
+        router.get('/:fileId', async (req: BareRequest, res: BareResponse) => {
             try {
                 const { fileId } = req.params;
                 const file = await connection.read(fileId);
@@ -69,7 +43,7 @@ export class CRUDRouterFactory {
             }
         });
 
-        router.post('/', async (req: RequestAdapter, res: ResponseAdapter) => {
+        router.post('/', async (req: BareRequest, res: BareResponse) => {
             try {
                 const { _id, ...data } = req.body;
                 const { _id: id, path } = await connection.create({
@@ -85,7 +59,7 @@ export class CRUDRouterFactory {
             }
         });
 
-        router.put('/:fileId', async (req: RequestAdapter, res: ResponseAdapter) => {
+        router.put('/:fileId', async (req: BareRequest, res: BareResponse) => {
             const override = req.query.override as AllowedOverride || AllowedOverride.TRUE;
             const arrayMergeStrategy = req.query.arrayMergeStrategy as AllowedArrayMergeStrategies || AllowedArrayMergeStrategies.CONCAT;
 
@@ -118,7 +92,7 @@ export class CRUDRouterFactory {
             }
         });
 
-        router.delete('/:fileId', async (req: RequestAdapter, res: ResponseAdapter) => {
+        router.delete('/:fileId', async (req: BareRequest, res: BareResponse) => {
             try {
                 const { fileId } = req.params;
                 await connection.delete(fileId);
@@ -132,8 +106,8 @@ export class CRUDRouterFactory {
         });
     }
 
-    static async generateRouter(config: CRUDPathConfig, mode: ServerMode = 'auto'): Promise<RouterAdapter> {
-        return await this.createCRUDRouter(config, mode);
+    static async generateRouter(config: CRUDPathConfig): Promise<BareRouter> {
+        return await this.createCRUDRouter(config);
     }
 }
 

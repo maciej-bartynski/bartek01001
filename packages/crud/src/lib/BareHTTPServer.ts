@@ -1,16 +1,15 @@
 import { createServer, IncomingMessage, ServerResponse, Server } from 'http';
-import { ServerAdapter, RequestAdapter, ResponseAdapter, RouterAdapter } from './ServerAdapter.js';
 import { BareRequest } from './BareRequest.js';
 import { BareResponse } from './BareResponse.js';
 import { BareRouter } from './BareRouter.js';
 
-export class BareHTTPServer implements ServerAdapter {
+export class BareHTTPServer {
     private server: Server;
     private routes: Array<{
         path: string;
-        router: RouterAdapter;
+        router: BareRouter;
     }> = [];
-    private middleware: Array<(req: RequestAdapter, res: ResponseAdapter, next: () => void) => void> = [];
+    private middleware: Array<(req: BareRequest, res: BareResponse, next: () => void) => void> = [];
 
     constructor() {
         this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
@@ -18,29 +17,29 @@ export class BareHTTPServer implements ServerAdapter {
         });
     }
 
-    use(path: string, router: RouterAdapter): void {
+    use(path: string, router: BareRouter): void {
         this.routes.push({ path, router });
     }
 
-    get(path: string, handler: (req: RequestAdapter, res: ResponseAdapter) => void): void {
+    get(path: string, handler: (req: BareRequest, res: BareResponse) => void): void {
         const router = new BareRouter();
         router.get(path, handler);
         this.routes.push({ path: '', router });
     }
 
-    post(path: string, handler: (req: RequestAdapter, res: ResponseAdapter) => void): void {
+    post(path: string, handler: (req: BareRequest, res: BareResponse) => void): void {
         const router = new BareRouter();
         router.post(path, handler);
         this.routes.push({ path: '', router });
     }
 
-    put(path: string, handler: (req: RequestAdapter, res: ResponseAdapter) => void): void {
+    put(path: string, handler: (req: BareRequest, res: BareResponse) => void): void {
         const router = new BareRouter();
         router.put(path, handler);
         this.routes.push({ path: '', router });
     }
 
-    delete(path: string, handler: (req: RequestAdapter, res: ResponseAdapter) => void): void {
+    delete(path: string, handler: (req: BareRequest, res: BareResponse) => void): void {
         const router = new BareRouter();
         router.delete(path, handler);
         this.routes.push({ path: '', router });
@@ -50,7 +49,11 @@ export class BareHTTPServer implements ServerAdapter {
         return this.server.listen(port, callback);
     }
 
-    private async handleRequest(req: IncomingMessage, res: ServerResponse): Promise<void> {
+    address(): any {
+        return this.server.address();
+    }
+
+    public async handleRequest(req: IncomingMessage, res: ServerResponse): Promise<void> {
         const bareReq = new BareRequest(req);
         const bareRes = new BareResponse(res);
 
@@ -89,7 +92,7 @@ export class BareHTTPServer implements ServerAdapter {
         }
     }
 
-    private async runMiddleware(req: RequestAdapter, res: ResponseAdapter): Promise<void> {
+    private async runMiddleware(req: BareRequest, res: BareResponse): Promise<void> {
         return new Promise((resolve) => {
             let index = 0;
 
@@ -105,15 +108,23 @@ export class BareHTTPServer implements ServerAdapter {
         });
     }
 
-    private async routeRequest(req: RequestAdapter, res: ResponseAdapter): Promise<void> {
+    private async routeRequest(req: BareRequest, res: BareResponse): Promise<void> {
         const url = new URL(req.url, 'http://localhost');
         const pathname = url.pathname;
 
         for (const route of this.routes) {
-            const fullPath = route.path ? `${route.path}${pathname}` : pathname;
-            if (route.router instanceof BareRouter) {
-                if (route.router.handleRequest(req.method, fullPath, req, res)) {
-                    return;
+            if (route.path && pathname.startsWith(route.path)) {
+                const remainingPath = pathname.substring(route.path.length);
+                if (route.router instanceof BareRouter) {
+                    if (route.router.handleRequest(req.method, remainingPath || '/', req, res)) {
+                        return;
+                    }
+                }
+            } else if (!route.path) {
+                if (route.router instanceof BareRouter) {
+                    if (route.router.handleRequest(req.method, pathname, req, res)) {
+                        return;
+                    }
                 }
             }
         }

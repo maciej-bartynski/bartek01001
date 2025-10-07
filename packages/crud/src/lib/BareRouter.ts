@@ -1,8 +1,9 @@
-import { RequestAdapter, ResponseAdapter, RouterAdapter } from './ServerAdapter.js';
+import { BareRequest } from './BareRequest.js';
+import { BareResponse } from './BareResponse.js';
 
-type RouteHandler = (req: RequestAdapter, res: ResponseAdapter) => void;
+type RouteHandler = (req: BareRequest, res: BareResponse) => void;
 
-export class BareRouter implements RouterAdapter {
+export class BareRouter {
     private routes: Array<{
         method: string;
         path: string;
@@ -25,7 +26,7 @@ export class BareRouter implements RouterAdapter {
         this.routes.push({ method: 'DELETE', path, handler });
     }
 
-    handleRequest(method: string, path: string, req: RequestAdapter, res: ResponseAdapter): boolean {
+    handleRequest(method: string, path: string, req: BareRequest, res: BareResponse): boolean {
         const route = this.routes.find(r =>
             r.method === method && this.matchPath(r.path, path)
         );

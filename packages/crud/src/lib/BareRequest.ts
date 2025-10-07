@@ -1,7 +1,6 @@
 import { IncomingMessage } from 'http';
-import { RequestAdapter } from './ServerAdapter.js';
 
-export class BareRequest implements RequestAdapter {
+export class BareRequest {
     public method: string;
     public url: string;
     public params: Record<string, string> = {};

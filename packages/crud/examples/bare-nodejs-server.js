@@ -1,7 +1,7 @@
 import { CRUDServer } from '@bartek0x1001/crud';
 
-// Create CRUD server in bare Node.js mode
-const crudServer = new CRUDServer({ mode: 'bare' });
+// Create CRUD server (always bare Node.js)
+const crudServer = new CRUDServer();
 crudServer.configure({ dataDirectory: 'data' });
 
 // Create CRUD endpoints for 'users'
@@ -13,7 +13,7 @@ await crudServer.path('products');
 // Get the bare Node.js server
 const server = crudServer.app();
 
-server.listen(3000, () => {
+server.listen(3001, () => {
     console.log('Bare Node.js CRUD server running on port 3000');
     console.log('CRUD endpoints available at:');
     console.log('- GET/POST /users');
@@ -44,9 +44,9 @@ server.listen(3000, () => {
     console.log('');
     console.log('Same operations work for /products endpoint!');
     console.log('');
-    console.log('=== BARE NODE.JS MODE BENEFITS ===');
+    console.log('=== BARE NODE.JS SERVER BENEFITS ===');
     console.log('- Zero external dependencies (no Express required)');
     console.log('- Smaller bundle size');
     console.log('- Direct Node.js HTTP server');
-    console.log('- Same CRUD functionality as Express mode');
+    console.log('- Express-like API for easy integration');
 });
