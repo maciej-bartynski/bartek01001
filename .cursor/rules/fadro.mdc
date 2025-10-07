@@ -46,6 +46,11 @@ These files regulate Fadro framework:
    - Mandatory rules for all work.  
    - Always read before starting work.  
    - Re-read frequently.
+   - You should re-read all fadro rules (coding-rules-critiera.mdc, fadro.mdc, roles.mdc, rules-lang.mdc) many times during every conversation
+   - It's mandatory to always apply those rules
+   - Example 1: Ambitious Young Developer questions specific detail of Your implementation plan: You should re-read rules before You re-think your plan.
+   - Example 2: Phase changes. You should re-read rules.
+   - Example 3: Ambitious Young Developer points that some of your code is bad. You should re-read rules before You find better solution.
 
 ### Docs Core Files
 These files are project documentation - which is relevant even if Fadro not exist in project:
@@ -60,8 +65,15 @@ These files are project documentation - which is relevant even if Fadro not exis
    - Always read before starting work.  
    - Re-read frequently.
 
-3. **`{root}/packages/{package}/docs/DEVELOPMENT.md`** and **`{root}/packages/{package}/README.md`** 
-   - TU DODAN NOWA TRESC - patrz wyzej jak to ma wygladac i uzupelnij
+3. **`{root}/packages/{package-name}/docs/DEVELOPMENT.md`** and **`{root}/packages/{package}/README.md`** 
+   - Required to understand the packafge.  
+   - Always read before starting working inside packages/{package-name} directory.  
+   - Re-read frequently during all phases, if working inside packages/{package-name} directory.
+
+4. **`{root}/packages/{package-name}/README.md`** — see [README.md](../../README.md)  
+   - Required to understand the package.  
+   - Always read before starting work inside packages/{package-name} directory.  
+   - Re-read frequently during all phases, if working inside packages/{package-name} directory.
 
 ---
 
