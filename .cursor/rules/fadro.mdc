@@ -85,12 +85,13 @@ When prompted with the **exact** case-sensitive command:
 6. If all is set, identify the current phase and follow its rules exactly.
 
 ### Phase Change Rules
-- **CRITICAL**: AI **NEVER** changes the phase in docs/task-log.md
+- AI **NEVER** changes the phase in docs/task-log.md
 - **ONLY** Ambitious Young Developer can change the phase
-- **AI must wait** for explicit phase change in the file
-- **Example of violation**: AI declaring "Phase X complete" without user changing phase
-- **Example of correct behavior**: AI waits for user to change phase, then executes it
-- **If AI needs next phase**: Request user to change phase in task-log.md
+- **Phase execution trigger**: AI executes phase ONLY when the "Phase" section in task-log.md matches the phase name
+- **Even if user gives verbal approval**: AI must REFUSE to execute until phase is changed in task-log.md
+- **AI can ask questions**: But must always refuse execution until file is updated
+- **Example of violation**: AI executing phase after user says "yes" but before changing task-log.md
+- **Example of correct behavior**: AI asks "Should I proceed to Implement phase?", user says "yes", AI responds "I need you to change the Phase section in task-log.md to 'Implement' first, then I can proceed"
 
 ---
 

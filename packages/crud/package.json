@@ -2,7 +2,7 @@
   "name": "@bartek0x1001/crud",
   "version": "1.0.0",
   "description": "Automated CRUD endpoints for JSON file storage in Express.js applications",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "type": "module",
   "publishConfig": {
     "access": "public"

@@ -2,7 +2,7 @@ import path from 'path';
 import globalConfig from '../../vitest.config.root.ts';
 import { defineConfig, mergeConfig } from 'vitest/config'
 
-const x = mergeConfig(globalConfig, {
+export default defineConfig(mergeConfig(globalConfig, {
     test: {
         sequence: {
             concurrent: false,
@@ -19,6 +19,4 @@ const x = mergeConfig(globalConfig, {
             '#src': path.resolve(__dirname, 'dist'),
         }
     }
-})
-
-export default defineConfig(x);
+}))

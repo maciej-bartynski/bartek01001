@@ -1,11 +1,11 @@
 # Development Guide
 
-This document provides comprehensive technical guidance for developing, testing, and deploying the CRUD Server NPM package.
+This document provides comprehensive technical guidance for developing, testing, and deploying the @bartek0x1001/crud NPM package.
 
 ## Project Structure
 
 ```
-crud-server/
+crud/
 ├── src/
 │   ├── lib/                    # Core package library
 │   │   ├── CRUDServer.ts       # Main CRUDServer class

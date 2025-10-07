@@ -1,6 +1,7 @@
 ---
 alwaysApply: true
 ---
+
 # Coding Rules Criteria
 - All code must use English language: variables, functions, filenames, etc. No Polish allowed in code.
 - **Code must be self-explanatory without comments** - This rule applies to ALL code files in the project (TypeScript, JavaScript, test files). No explanatory comments are allowed in any code.

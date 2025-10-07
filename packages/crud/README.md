@@ -1,4 +1,4 @@
-# crud-server
+# @bartek0x1001/crud
 
 A lightweight Node.js package that automatically generates CRUD (Create, Read, Update, Delete) endpoints for Express.js applications using JSON file storage.
 
@@ -19,14 +19,14 @@ A lightweight Node.js package that automatically generates CRUD (Create, Read, U
 ## Installation
 
 ```bash
-npm install crud-server
+npm install @bartek0x1001/crud
 ```
 
 ## Quick Start
 
 ```javascript
 import express from 'express';
-import { CRUDServer } from 'crud-server';
+import { CRUDServer } from '@bartek0x1001/crud';
 
 const app = express();
 app.use(express.json());
@@ -186,7 +186,7 @@ await crudServer.path('logs');
 
 ```javascript
 import express from 'express';
-import { CRUDServer } from 'crud-server';
+import { CRUDServer } from '@bartek0x1001/crud';
 
 const app = express();
 app.use(express.json());
