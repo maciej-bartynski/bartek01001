@@ -166,7 +166,7 @@ describe('CRUDServer CRUD Functionality Tests', () => {
                 category: 'example'
             };
 
-            const response1 = await request(multiApp)
+            const response1 = await request(multiApp as any)
                 .post(`/${path1}`)
                 .send(testData);
 
@@ -174,7 +174,7 @@ describe('CRUDServer CRUD Functionality Tests', () => {
                 console.log('Error response 1:', response1.body);
             }
 
-            const response2 = await request(multiApp)
+            const response2 = await request(multiApp as any)
                 .post(`/${path2}`)
                 .send(testData);
 
@@ -184,7 +184,6 @@ describe('CRUDServer CRUD Functionality Tests', () => {
             expect(response2.body._id).toBeDefined();
             expect(response1.body._id).not.toBe(response2.body._id);
 
-            // Cleanup
             if (fs.existsSync(multiDataDir)) {
                 fs.rmSync(multiDataDir, { recursive: true, force: true });
             }

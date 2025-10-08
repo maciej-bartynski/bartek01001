@@ -1,6 +1,6 @@
 # @bartek0x1001/crud
 
-A lightweight Node.js package that automatically generates CRUD (Create, Read, Update, Delete) endpoints for both Express.js and bare Node.js applications using JSON file storage.
+A lightweight Node.js package that automatically generates CRUD (Create, Read, Update, Delete) endpoints using bare Node.js HTTP server with Express-like API and JSON file storage.
 
 ## Overview
 
@@ -12,9 +12,9 @@ A lightweight Node.js package that automatically generates CRUD (Create, Read, U
 - **Generic data handling** - Works with any JSON data structure
 - **Dynamic path creation** - Create endpoints on-the-fly
 - **JSON file storage** - Built-in persistent storage using `@bartek0x1001/json-storage`
-- **Dual-mode support** - Works with both Express.js and bare Node.js servers
-- **Express.js integration** - Seamlessly integrates with existing Express apps
-- **Bare Node.js support** - Zero-dependency standalone server option
+- **Bare Node.js server** - Always uses bare Node.js HTTP server (zero external dependencies)
+- **Express-like API** - Familiar Express.js API for easy integration
+- **Express.js integration** - Seamlessly integrates with existing Express apps via middleware
 - **TypeScript support** - Full TypeScript definitions included
 - **Method chaining** - Fluent API for easy configuration
 
@@ -25,6 +25,29 @@ npm install @bartek0x1001/crud
 ```
 
 ## Quick Start
+
+### Standalone Bare Node.js Server
+
+```javascript
+import { CRUDServer } from '@bartek0x1001/crud';
+
+// Create CRUD server (always bare Node.js)
+const crudServer = new CRUDServer();
+crudServer.configure({ dataDirectory: 'data' });
+
+// Create CRUD endpoints for 'users'
+await crudServer.path('users');
+
+// Create CRUD endpoints for 'products' 
+await crudServer.path('products');
+
+// Get the bare Node.js server
+const server = crudServer.app();
+
+server.listen(3000, () => {
+  console.log('Bare Node.js CRUD server running on port 3000');
+});
+```
 
 ### Express.js Integration
 
@@ -44,51 +67,15 @@ await crudServer.path('users');
 // Create CRUD endpoints for 'products' 
 await crudServer.path('products');
 
-// Get the configured Express app
-const crudApp = crudServer.app();
+// Get Express middleware for integration
+const crudMiddleware = crudServer.getExpressMiddleware();
 
 // Mount the CRUD routes
-app.use('/api', crudApp);
+app.use('/api', crudMiddleware);
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
-```
-
-### Bare Node.js Server
-
-```javascript
-import { CRUDServer } from '@bartek0x1001/crud';
-
-const crudServer = new CRUDServer({ mode: 'bare' });
-crudServer.configure({ dataDirectory: 'data' });
-
-// Create CRUD endpoints for 'users'
-await crudServer.path('users');
-
-// Create CRUD endpoints for 'products' 
-await crudServer.path('products');
-
-// Get the bare Node.js server
-const server = crudServer.app();
-
-server.listen(3000, () => {
-  console.log('Bare Node.js CRUD server running on port 3000');
-});
-```
-
-### Auto-Detection Mode (Default)
-
-```javascript
-import { CRUDServer } from '@bartek0x1001/crud';
-
-// Automatically detects if Express is available
-const crudServer = new CRUDServer();
-crudServer.configure({ dataDirectory: 'data' });
-
-await crudServer.path('users');
-const server = crudServer.app();
-server.listen(3000);
 ```
 
 ## API Reference
@@ -114,10 +101,17 @@ await crudServer.path('orders');    // Creates /orders endpoints
 ```
 
 #### `app()`
-Get the configured Express application with all CRUD routes.
+Get the bare Node.js HTTP server with all CRUD routes.
 
 ```javascript
-const crudApp = crudServer.app();
+const server = crudServer.app();
+```
+
+#### `getExpressMiddleware()`
+Get Express.js middleware for integration with existing Express applications.
+
+```javascript
+const crudMiddleware = crudServer.getExpressMiddleware();
 ```
 
 ### Generated Endpoints
@@ -236,11 +230,12 @@ app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 // CRUD server
 const crudServer = new CRUDServer();
-await crudServer.path('api/users');
-await crudServer.path('api/products');
+await crudServer.path('users');
+await crudServer.path('products');
 
-// Mount CRUD routes
-app.use('/', crudServer.app());
+// Get Express middleware and mount CRUD routes
+const crudMiddleware = crudServer.getExpressMiddleware();
+app.use('/api', crudMiddleware);
 
 app.listen(3000);
 ```
@@ -248,12 +243,12 @@ app.listen(3000);
 ## Technical Details
 
 - **Runtime**: Node.js 18+ (ES2024 features)
-- **Dual-mode**: Supports both Express.js and bare Node.js servers
-- **Express.js**: 5.1.0+ (optional peer dependency)
+- **Server**: Always bare Node.js HTTP server (zero external dependencies)
+- **Express.js**: 5.1.0+ (optional peer dependency for Express integration)
 - **Storage**: `@bartek0x1001/json-storage` for JSON file persistence
 - **TypeScript**: Full type definitions included
 - **ESM**: Native ES modules support
-- **Zero dependencies**: Works without Express for bare Node.js mode
+- **Express-like API**: Familiar Express.js API for easy integration
 
 ## Development
 

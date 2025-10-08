@@ -1,6 +1,6 @@
 # Development Guide
 
-This document provides comprehensive technical guidance for developing, testing, and deploying the @bartek0x1001/crud NPM package with dual-mode support for both Express.js and bare Node.js servers.
+This document provides comprehensive technical guidance for developing, testing, and deploying the @bartek0x1001/crud NPM package with always bare Node.js server and Express-like API.
 
 ## Project Structure
 
@@ -8,11 +8,8 @@ This document provides comprehensive technical guidance for developing, testing,
 crud/
 ├── src/
 │   ├── lib/                    # Core package library
-│   │   ├── CRUDServer.ts       # Main CRUDServer class (dual-mode)
-│   │   ├── CRUDRouterFactory.ts # CRUD router generator (dual-mode)
-│   │   ├── ServerAdapter.ts    # Adapter interface for dual-mode
-│   │   ├── ExpressAdapter.ts   # Express.js adapter
-│   │   ├── BareNodeAdapter.ts  # Bare Node.js adapter
+│   │   ├── CRUDServer.ts       # Main CRUDServer class (always bare Node.js)
+│   │   ├── CRUDRouterFactory.ts # CRUD router generator (always bare Node.js)
 │   │   ├── BareHTTPServer.ts   # Bare Node.js HTTP server
 │   │   ├── BareRequest.ts      # Bare Node.js request wrapper
 │   │   ├── BareResponse.ts     # Bare Node.js response wrapper
@@ -21,7 +18,6 @@ crud/
 │   └── index.ts                # Package entry point
 ├── tests/                      # Test files for package functionality
 │   └── lib/                    # Tests for core library classes
-├── examples/                   # Usage examples for package users
 ├── dist/                       # Compiled JavaScript output
 ├── docs/                       # Project documentation
 ├── tsconfig.json               # TypeScript configuration
@@ -201,20 +197,19 @@ npm pack
 - `uuid`: Unique identifier generation
 
 ### Peer Dependencies (Optional)
-- `express`: >=5.0.0 (optional - only needed for Express.js mode)
+- `express`: >=5.0.0 (optional - only needed for Express.js integration)
 
 ### Development Dependencies
 - `typescript`: TypeScript compiler
 - `vitest`: Test runner
-- `@types/express`: Express type definitions (for testing)
 - `@types/node`: Node.js type definitions
 - `concurrently`: Run multiple commands simultaneously
 - `supertest`: HTTP testing library
 
-### Dual-Mode Architecture
-- **Express.js mode**: Uses Express.js framework (requires express peer dependency)
-- **Bare Node.js mode**: Uses built-in Node.js HTTP server (zero external dependencies)
-- **Auto-detection**: Automatically chooses mode based on Express availability
+### Architecture
+- **Always bare Node.js**: Uses built-in Node.js HTTP server (zero external dependencies)
+- **Express-like API**: Familiar Express.js API for easy integration
+- **Express integration**: Provides middleware for existing Express applications
 
 ## Coding Standards
 

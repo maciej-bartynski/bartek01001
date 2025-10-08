@@ -13,7 +13,7 @@ help:
 	@echo "  dev-json-storage - Start development mode for json-storage package"
 	@echo "  clean       - Clean all build artifacts in container"
 	@echo "  npm cmd=... - Run npm command in container (e.g. make npm cmd=\"install\")"
-	@echo "  docker cmd=... - Run docker-compose command (e.g. make docker cmd=\"logs\")"
+	@echo "  docker-compose cmd=... - Run docker-compose command (e.g. make docker-compose cmd=\"logs\")"
 	@echo "  restart     - Restart existing container (faster than setup)"
 	@echo "  stop        - Stop container (keeps it for restart)"
 	@echo "  changeset   - Create new changeset"
@@ -61,7 +61,11 @@ build:
 npm:
 	docker exec -t bartek0x1001 npm $(cmd)
 
+# exapmle: docker exec -it bartek0x1001 sh
 docker:
+	docker $(cmd)
+	
+docker-compose:
 	docker-compose $(cmd)
 
 test:

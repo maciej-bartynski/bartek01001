@@ -23,9 +23,12 @@
     "license": "MIT",
     "devDependencies": {
         "@changesets/cli": "^2.27.1",
+        "@types/node": "22.18.8",
         "concurrently": "^9.2.1",
         "typescript": "^5.8.3",
-        "vitest": "^3.2.4",
-        "@types/node": "22.18.8"
+        "vitest": "^3.2.4"
+    },
+    "dependencies": {
+        "@bartek0x1001/deep-merge": "^1.0.0"
     }
 }

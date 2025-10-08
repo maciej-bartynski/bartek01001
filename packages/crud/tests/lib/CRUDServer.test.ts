@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { CRUDServer } from '#src/lib/CRUDServer.js';
-import type { Application } from 'express';
 
 describe('CRUDServer', () => {
     let crudServer: CRUDServer;
@@ -37,7 +36,7 @@ describe('CRUDServer', () => {
         expect(crudServer.getPaths()[1].path).toBe('path2');
     });
 
-    it('should return Express app instance', () => {
+    it('should return bare Node.js server instance', () => {
         const app = crudServer.app();
         expect(typeof app.use).toBe('function');
         expect(typeof app.get).toBe('function');

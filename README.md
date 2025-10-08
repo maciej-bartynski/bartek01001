@@ -42,7 +42,7 @@ npm install @bartek0x1001/deep-merge
 # JSON file storage
 npm install @bartek0x1001/json-storage
 
-# Express.js CRUD endpoints
+# Node.js CRUD endpoints
 npm install @bartek0x1001/crud
 
 # AI workflow framework

@@ -1,9 +1,9 @@
 import JSONStoragePackage from "@bartek0x1001/json-storage";
 import { CRUDPathConfig, CRUDResponse, CRUDDeleteResponse, CRUDListResponse, CRUDItemResponse } from "./types.js";
-import deepMergeObjects from "#src/utils/deepMergeObjects/deepMergeObjects.js";
 import { BareRouter } from "./BareRouter.js";
 import { BareRequest } from "./BareRequest.js";
 import { BareResponse } from "./BareResponse.js";
+import deepMergeObjects from "@bartek0x1001/deep-merge";
 
 export class CRUDRouterFactory {
     private static async createCRUDRouter(config: CRUDPathConfig): Promise<BareRouter> {
