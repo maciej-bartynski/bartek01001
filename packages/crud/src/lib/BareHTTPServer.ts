@@ -9,6 +9,7 @@ export class BareHTTPServer {
         path: string;
         router: BareRouter;
     }> = [];
+
     private middleware: Array<(req: BareRequest, res: BareResponse, next: () => void) => void> = [];
 
     constructor() {
